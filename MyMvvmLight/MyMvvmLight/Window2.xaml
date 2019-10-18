@@ -1,0 +1,35 @@
+﻿<Window x:Class="MyMvvmLight.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyMvvmLight"
+        DataContext="{Binding Source={StaticResource Locator},Path=View2}"
+        mc:Ignorable="d"
+        Title="Window2" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="{Binding Teacher.Name}"></TextBlock>
+            <TextBlock Text="{Binding Teacher.Age}"></TextBlock>
+            <ListView ItemsSource="{Binding Teacher.Students}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="姓名" DisplayMemberBinding="{Binding Name}" ></GridViewColumn>
+                        <GridViewColumn Header="年龄" DisplayMemberBinding="{Binding Age}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <Button Content="改变教师名称" Command="{Binding ChangeTeacherNameCommand}"></Button>
+            <Button Content="增加学生" Command="{Binding AddStudentCommand}"></Button>
+            <Button Content="改变最后一名学生名称" Command="{Binding ChangeLastStudentNameCommand}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>
