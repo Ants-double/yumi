@@ -1,0 +1,62 @@
+﻿<Fluent:RibbonWindow x:Class="OfficeTools.Index"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
+                     
+         xmlns:Fluent="urn:fluent-ribbon"
+        xmlns:local="clr-namespace:OfficeTools"
+        mc:Ignorable="d"
+                     
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Index" Height="450" Width="800" DataContext="{Binding Main, Source={StaticResource Locator}}" >
+   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Fluent:Ribbon Grid.Row="0">
+            <!--Backstage-->
+            <Fluent:Ribbon.Menu>
+                <Fluent:Backstage>
+                    <Fluent:BackstageTabControl>
+                        <Fluent:BackstageTabItem Header="New" />
+                        <Fluent:BackstageTabItem Header="Print" />
+                        <Fluent:Button Header="Blue" />
+                    </Fluent:BackstageTabControl>
+                </Fluent:Backstage>
+               
+            </Fluent:Ribbon.Menu>
+
+            <!--Tabs-->
+            <Fluent:RibbonTabItem Header="Home">               
+                <!--By default ReduceOrder="Large, Middle, Small"-->
+                <Fluent:RibbonGroupBox Name="PictureDeal" Header="Image"  >
+                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First </TextBlock>
+                </Fluent:RibbonGroupBox>               
+            </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="工具">
+                <Fluent:RibbonGroupBox Name="PingSocket" Header="Image"  >
+                    <Button
+        Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+        Width="100" Command="{Binding SendCommand}"
+        ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                       _Ping百度
+                    </Button>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+        </Fluent:Ribbon>
+        <Frame Name="MainPage"  NavigationUIVisibility="Hidden" Grid.RowSpan="1"  Grid.Row="1"  Source="{Binding FramePage.Name}" Background="LightBlue">
+        </Frame>
+
+    </Grid>
+    
+</Fluent:RibbonWindow>
