@@ -42,7 +42,8 @@ namespace MergeExcelTools
 
            
             List<FileInfo> lists = getFile(sourcePathStr, ".xlsx");
-            Workbook workbook = new Workbook();
+               // lists.AddRange( getFile(sourcePathStr, ".xls"));
+             Workbook workbook = new Workbook();
             if (!File.Exists(resultPathStr))
             {
                 MessageBox.Show("请选择结果文件");
@@ -140,6 +141,42 @@ namespace MergeExcelTools
 
                 return lst;
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //实例化一个Workbook类，加载Excel文档
+            Workbook workbook = new Workbook();
+            workbook.LoadFromFile(resultPathStr);
+            //获取第1、2张工作表
+            Worksheet sheet1 = workbook.Worksheets[0];
+            //Worksheet sheet2 = workbook.Worksheets[1];
+
+            ////复制第2张工作表内容到第1张工作表的指定区域中
+            //sheet2.AllocatedRange.Copy(sheet1.Range[sheet1.LastRow + 5, 1]);
+
+            //Worksheet sheet3 = workbook.Worksheets[2];
+            //sheet3.AllocatedRange.Copy(sheet1.Range[sheet1.LastRow + 3, 1]);
+
+            for (int i = 1; i < workbook.Worksheets.Count; i++)
+            {
+                Worksheet sheet2 = workbook.Worksheets[i];
+                sheet2.AllocatedRange.Copy(sheet1.Range[sheet1.LastRow + 5, 1]);
+               
+            }
+
+            for (int i = 1; i < workbook.Worksheets.Count; i++)
+            {
+                workbook.Worksheets[i].Remove();
+               
+
+            }
+
+            //重命名的工作表1
+            sheet1.Name = "合并";
+
+            //保存并运行文档
+            workbook.SaveToFile(resultPathStr);
         }
     }
 }

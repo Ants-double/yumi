@@ -16,6 +16,7 @@
         <Button Content="选择文件夹" x:Name="sourceBtn" HorizontalAlignment="Left" Margin="199,46,0,0" VerticalAlignment="Top" Width="75" Click="sourceBtn_Click"/>
         <Button Content="选择目录文件" HorizontalAlignment="Left" Margin="204,115,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Label x:Name="statusLabel" Content="状态----有问题联系:ants__double@yeah.net" HorizontalAlignment="Left" Margin="91,289,0,0" VerticalAlignment="Top" Width="563" Height="89"/>
+        <Button Content="合并sheet" HorizontalAlignment="Left" Margin="379,219,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
